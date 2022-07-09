@@ -46,28 +46,33 @@ const StartGame: FC<StartGameScreenProps> = ({ onNumberSave }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        {...textInputProps}
-        value={number}
-        onChangeText={onNumberChange}
-      />
+    <View style={styles.root_container}>
+      <View style={styles.start__game_title}>
+        <Text style={styles.start__game_title_text}>Guess sthe number</Text>
+      </View>
+      <View style={styles.container}>
+        <TextInput
+          {...textInputProps}
+          value={number}
+          onChangeText={onNumberChange}
+        />
 
-      <View style={styles.buttons}>
-        <View style={styles.buttons_inner}>
-          <CustomButton
-            view={ButtonView.primary}
-            title="Confirm"
-            onPress={onConfirmPress}
-          />
-        </View>
+        <View style={styles.buttons}>
+          <View style={styles.buttons_inner}>
+            <CustomButton
+              view={ButtonView.primary}
+              title="Confirm"
+              onPress={onConfirmPress}
+            />
+          </View>
 
-        <View style={styles.buttons_inner}>
-          <CustomButton
-            view={ButtonView.secondary}
-            title="Reset"
-            onPress={onCancelPress}
-          />
+          <View style={styles.buttons_inner}>
+            <CustomButton
+              view={ButtonView.secondary}
+              title="Reset"
+              onPress={onCancelPress}
+            />
+          </View>
         </View>
       </View>
     </View>

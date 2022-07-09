@@ -4,7 +4,7 @@ import { colors } from "../../styles/colors";
 
 export default StyleSheet.create({
   button: {
-    paddingVertical: 8,
+    paddingVertical: 18,
     paddingHorizontal: 16,
     borderRadius: 28,
   },
@@ -17,6 +17,7 @@ export default StyleSheet.create({
   button__text: {
     color: colors.white,
     textAlign: "center",
+    fontSize: 18,
   },
 
   button_ripple: {

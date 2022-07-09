@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../styles/colors";
 
 export default StyleSheet.create({
+  root_container: {
+    marginHorizontal: 24,
+  },
   container: {
     padding: 16,
-    marginTop: 100,
-    marginHorizontal: 24,
-
     backgroundColor: colors.violetLight,
 
     borderRadius: 8,
@@ -35,6 +35,24 @@ export default StyleSheet.create({
     borderBottomColor: colors.yellow,
     borderBottomWidth: 2,
     marginVertical: 8,
+  },
+
+  start__game_title: {
+    marginVertical: 30,
+  },
+
+  start__game_title_text: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+
+    color: colors.yellow,
+
+    marginBottom: 24,
+    padding: 16,
+
+    borderWidth: 2,
+    borderColor: colors.yellow,
   },
 
   buttons: {
