@@ -1,16 +1,31 @@
 import { FC, useEffect, useState } from "react";
-import { View, Text, SafeAreaView, Alert } from "react-native";
+import { View, Text, SafeAreaView, Alert, FlatList } from "react-native";
 import CustomButton, { ButtonView } from "../../components/button";
 
 import { generateNumber } from "./game.utils";
 
 import styles from "./game.styles";
 
+enum Decision {
+  higher = "higher",
+  lower = "lower",
+}
+
+type Round = {
+  number: number;
+  decision: Decision;
+};
+
 type GameScreenProps = {
   numberToGuess: number;
   onGameOver: () => void;
+  onMoveMake: () => void;
 };
-const Game: FC<GameScreenProps> = ({ numberToGuess, onGameOver }) => {
+const Game: FC<GameScreenProps> = ({
+  numberToGuess,
+  onGameOver,
+  onMoveMake,
+}) => {
   const [range, setRange] = useState<{ min: number; max: number }>({
     min: 1,
     max: 100,
@@ -20,11 +35,19 @@ const Game: FC<GameScreenProps> = ({ numberToGuess, onGameOver }) => {
 
   const [isGameOver, setIsGameOver] = useState(false);
 
+  const [rounds, setRounds] = useState<Round[]>([]);
+
   const onHigherPress = () => {
     if (numberToGuess > currentNumber)
       return Alert.alert("Don`t lie!", `${currentNumber} is lower than number`);
 
     setRange((prev) => ({ ...prev, max: currentNumber }));
+
+    setRounds((prev) =>
+      prev.concat({ number: currentNumber, decision: Decision.higher })
+    );
+
+    onMoveMake();
   };
 
   const onLowerPress = () => {
@@ -35,6 +58,12 @@ const Game: FC<GameScreenProps> = ({ numberToGuess, onGameOver }) => {
       );
 
     setRange((prev) => ({ ...prev, min: currentNumber }));
+
+    setRounds((prev) =>
+      prev.concat({ number: currentNumber, decision: Decision.lower })
+    );
+
+    onMoveMake();
   };
 
   useEffect(() => {
@@ -92,8 +121,24 @@ const Game: FC<GameScreenProps> = ({ numberToGuess, onGameOver }) => {
         </View>
       </View>
 
-      <View>
+      <View style={styles.game__moves}>
         <Text>ROUNDS LOG</Text>
+
+        <View>
+          <FlatList
+            data={rounds}
+            renderItem={(round) => (
+              <Text style={styles.game__move_item}>
+                {round.item.number}
+                {" -> "}
+                {round.item.decision}
+              </Text>
+            )}
+            keyExtractor={(round, index) =>
+              round.number.toString() + round.decision + index
+            }
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

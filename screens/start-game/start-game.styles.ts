@@ -43,8 +43,8 @@ export default StyleSheet.create({
 
   start__game_title_text: {
     fontSize: 24,
-    fontWeight: "bold",
     textAlign: "center",
+    fontFamily: "open-sans-bold",
 
     color: colors.yellow,
 

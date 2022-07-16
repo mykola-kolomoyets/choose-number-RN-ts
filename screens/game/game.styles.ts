@@ -58,4 +58,17 @@ export default StyleSheet.create({
   game__buttons_item: {
     flex: 1,
   },
+
+  game__moves: {
+    flex: 1,
+    padding: 16,
+  },
+
+  game__move_item: {
+    padding: 16,
+    marginBottom: 16,
+    marginTop: 8,
+    backgroundColor: colors.yellow,
+    color: colors.white,
+  },
 });

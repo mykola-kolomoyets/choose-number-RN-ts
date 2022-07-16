@@ -48,7 +48,7 @@ const StartGame: FC<StartGameScreenProps> = ({ onNumberSave }) => {
   return (
     <View style={styles.root_container}>
       <View style={styles.start__game_title}>
-        <Text style={styles.start__game_title_text}>Guess sthe number</Text>
+        <Text style={styles.start__game_title_text}>Guess the number</Text>
       </View>
       <View style={styles.container}>
         <TextInput
